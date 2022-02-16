@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  status-state-api:
+    build:
+      dockerfile: Dockerfile
+      context: ./status-state-api
+    ports:
+      - '8080:5000'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+  status-state-controller:
+    build:
+      dockerfile: Dockerfile
+      context: ./status-state-controller
+    depends_on:
+      - "status-state-api"
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
