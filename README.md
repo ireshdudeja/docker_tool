@@ -99,3 +99,45 @@ I am using Docker-Compose to run this tool. Containers in Docker Compose are des
 
 - I can use `kubectl get deployments` to check if deployment is created.
 - I can also utilize [Prometheus](https://prometheus.io/) monitoring system for cluster and application-level monitoring.
+
+## Additional info
+
+---
+
+I have tested this tool on macOS(v12.2) with the following `docker version`
+
+```bash
+Client:
+ Cloud integration: v1.0.22
+ Version:           20.10.12
+ API version:       1.41
+ Go version:        go1.16.12
+ Git commit:        e91ed57
+ Built:             Mon Dec 13 11:46:56 2021
+ OS/Arch:           darwin/arm64
+ Context:           default
+ Experimental:      true
+
+Server: Docker Desktop 4.5.0 (74594)
+ Engine:
+  Version:          20.10.12
+  API version:      1.41 (minimum version 1.12)
+  Go version:       go1.16.12
+  Git commit:       459d0df
+  Built:            Mon Dec 13 11:43:07 2021
+  OS/Arch:          linux/arm64
+  Experimental:     false
+ containerd:
+  Version:          1.4.12
+  GitCommit:        7b11cfaabd73bb80907dd23182b9347b4245eb5d
+ runc:
+  Version:          1.0.2
+  GitCommit:        v1.0.2-0-g52b36a2
+ docker-init:
+  Version:          0.19.0
+  GitCommit:        de40ad0
+```
+
+To run this tool on Ubuntu, you need to add `extra_hosts` in docker-compose.yml file as shown below. I have tested it on `ubuntu-focal-20.04`. You may also have to update the `version` based on your `docker-compose` tool.
+
+![Ubuntu fix](./ubuntu_fix.png)
